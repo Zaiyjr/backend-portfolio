@@ -22,7 +22,7 @@ app.use(express.static('public')) // Serve static files from the 'public' direct
 app.get('/api/health', (req, res) => {
   res.status(200).json({ ok: true, adminKeyConfigured })
 })
-app.use('/api', routes)
+app.use('/', routes)
 app.listen(PORT, () => {
   if (!adminKeyConfigured) {
     console.warn('WARNING: ADMIN_KEY is not configured. Write routes will return 500.')
