@@ -9,7 +9,11 @@ const adminKeyConfigured = Boolean(process.env.ADMIN_KEY && String(process.env.A
 
 // middlewares
 app.use(cors({
-  origin: 'https://frontend-portfolio-theta-three.vercel.app', // 🔗 ໃສ່ URL ໜ້າບ້ານທີ່ໄດ້ຈາກ Vercel 
+  
+  origin:[
+  'http://localhost:5173',
+   'https://frontend-portfolio-kpsb.vercel.app'
+   ], // 🔗 ໃສ່ URL ໜ້າບ້ານທີ່ໄດ້ຈາກ Vercel 
   credentials: true, // 👈 ບັງຄັບໃສ່ໃຫ້ຕົງກັບຝັ່ງ Frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
