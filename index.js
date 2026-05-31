@@ -16,7 +16,7 @@ app.use(cors({
    ], // 🔗 ໃສ່ URL ໜ້າບ້ານທີ່ໄດ້ຈາກ Vercel 
   credentials: true, // 👈 ບັງຄັບໃສ່ໃຫ້ຕົງກັບຝັ່ງ Frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'x-admin-key']
 }));// ອະນຸຍາດໃຫ້ທຸກ Domain ເຂົ້າເຖິງໄດ້ (ສຳລັບ Development)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
