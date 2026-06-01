@@ -11,8 +11,7 @@ const adminKeyConfigured = Boolean(process.env.ADMIN_KEY && String(process.env.A
 app.use(cors({
   
   origin:[
-  'http://localhost:5173',
-   'https://frontend-portfolio-kpsb.vercel.app'
+  'http://localhost:5173'
    ], // 🔗 ໃສ່ URL ໜ້າບ້ານທີ່ໄດ້ຈາກ Vercel 
   credentials: true, // 👈 ບັງຄັບໃສ່ໃຫ້ຕົງກັບຝັ່ງ Frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -27,9 +26,15 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ ok: true, adminKeyConfigured })
 })
 app.use('/', routes)
-app.listen(PORT, () => {
-  if (!adminKeyConfigured) {
-    console.warn('WARNING: ADMIN_KEY is not configured. Write routes will return 500.')
-  }
-  console.log(`Server is running on port ${PORT}`)
-})
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    if (!adminKeyConfigured) {
+      console.warn('WARNING: ADMIN_KEY is not configured. Write routes will return 500.')
+    }
+    console.log(`Server is running on port ${PORT}`)
+  })
+}
+
+export default app
+
