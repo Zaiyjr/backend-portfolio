@@ -11,7 +11,8 @@ const adminKeyConfigured = Boolean(process.env.ADMIN_KEY && String(process.env.A
 app.use(cors({
   
   origin:[
-  'http://localhost:5173'
+  'http://localhost:5173',
+  'https://frontend-portfolio-kpsb.vercel.app'
    ], // 🔗 ໃສ່ URL ໜ້າບ້ານທີ່ໄດ້ຈາກ Vercel 
   credentials: true, // 👈 ບັງຄັບໃສ່ໃຫ້ຕົງກັບຝັ່ງ Frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -22,9 +23,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public')) // Serve static files from the 'public' directory
 
 // routes
-app.get('/', (req, res) => {
-  res.send('Welcome to the Portfolio Backend API!')
-})
 app.get('/api/health', (req, res) => {
   res.status(200).json({ ok: true, adminKeyConfigured })
 })
