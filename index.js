@@ -22,6 +22,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public')) // Serve static files from the 'public' directory
 
 // routes
+app.get('/', (req, res) => {
+  res.send('Welcome to the Portfolio Backend API!')
+})
 app.get('/api/health', (req, res) => {
   res.status(200).json({ ok: true, adminKeyConfigured })
 })
